@@ -108,6 +108,9 @@ export default function Main() {
           <Typography variant="h6" className={classes.title}>
             Data Management
           </Typography>
+          <Button variant="contained" size="small" endIcon={<PlusOne />} onClick={()=> history.push('/main/create')}>
+        Add
+      </Button>
           <div>
             <IconButton onClick={handleMenu} color="inherit">
               <Avatar src={""} />
@@ -121,11 +124,10 @@ export default function Main() {
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
+          
         </Toolbar>
       </AppBar>
-      <Button variant="contained" size="small" endIcon={<PlusOne />} onClick={()=> history.push('/main/create')}>
-        Add
-      </Button>
+
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 20 }} aria-label="simple table">

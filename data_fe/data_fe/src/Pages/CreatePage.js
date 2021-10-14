@@ -22,18 +22,19 @@ const CreatePage = () => {
 
 const token = JSON.parse(localStorage.getItem('access_token'));
 
+const getHeader = {
+  Authorization: "Bearer " + token.access_token,
+}
+
   const onSubmit = async (data) => {
     // console.log(data);
     // console.log(token.access_token);
     const apiUrl = "http://localhost:4000/student";
     const resp = await axios.post(apiUrl, {
-      headers: {
-        Authorization: "Bearer " + token.access_token,
-      },
       student_id: data.student_id,
       name: data.name,
       year: data.year,
-    });
+    }, {headers: getHeader});
     alert(resp.data.message); //บันทึกข้อมูลเรียบร้อย
     history.replace("/main");
   };
