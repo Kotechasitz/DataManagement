@@ -19,6 +19,7 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SendIcon from "@material-ui/icons/Send";
 import PlusOne from "@material-ui/icons/PlusOne";
+import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -102,7 +103,8 @@ export default function Main() {
   }
 
   return (
-    <div className={classes.root}>
+    <Container className="mt-4">
+      <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
@@ -189,5 +191,6 @@ export default function Main() {
         </Table>
       </TableContainer>
     </div>
+    </Container>
   );
 }

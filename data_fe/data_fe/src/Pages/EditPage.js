@@ -8,9 +8,9 @@ import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
 const token = JSON.parse(localStorage.getItem('access_token'));
-const getHeader = {
-  Authorization: "Bearer " + token.access_token,
-}
+// const getHeader = {
+//   Authorization: "Bearer " + token.access_token,
+// }
 
 const schema = yup.object().shape({
   name: yup.string().required("Require*"),
@@ -26,7 +26,7 @@ const EditPage = () => {
   });
   
   const getData = async () => {
-    const resp = await axios.get("http://localhost:4000/student/"+id,{headers: getHeader});
+    const resp = await axios.get("http://localhost:4000/student/"+id,{headers: {Authorization: "Bearer " + token.access_token}});
     console.log(resp.data);
     setValue('student_id', resp.data.data.student_id)
     setValue('name', resp.data.data.name)
@@ -44,7 +44,7 @@ const EditPage = () => {
       student_id: data.student_id,
       name: data.name,
       year: data.year,
-    }, {headers: getHeader});
+    }, {headers: {Authorization: "Bearer " + token.access_token}});
     if(resp.status === 200){
         alert('Update Student Data Success');
     }
